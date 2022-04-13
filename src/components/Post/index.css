@@ -1,0 +1,25 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    border: 1px solid gray;
+  }
+  .post__image {
+    width: 500px;
+    height: 300px;
+  }
+  .like {
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+  }
+  .active {
+    background-color: red;
+  }
+  
+  .postAuthor_img {
+    width: 60px;
+    height: 60px;
+    float:left;
+  }
+

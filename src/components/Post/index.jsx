@@ -1,0 +1,46 @@
+import React from "react";
+import Button from "../button";
+import "./index.css";
+
+const Post = ({
+_id,
+updateLikeStatus,
+user,
+image,
+likes,
+comments,
+tags,
+title,
+author,
+text,
+created_at,
+updated_at,
+deletePost,
+}) =>{
+    const Comment = ({text, _id}) => <div className="comment">{text}</div>
+    const isLiked = likes.some(el=> el===user?._id)
+    const canDelete = (author?._id===user?._id)
+return (
+<div className="post">
+<div><img className="post__image" src={image}></img></div>
+<div className="post__like" onClick={()=>updateLikeStatus(isLiked, _id)}>{isLiked? <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAyMUMxMi4yMTE1IDIxIDEyLjUxMzYgMjAuODYyNyAxMi43MzUxIDIwLjczNTNDMTguNDA0OCAxNy4yMDU5IDIyIDEzLjA5OCAyMiA4LjkyMTU3QzIyIDUuNDUwOTggMTkuNTUyOSAzIDE2LjI5IDNDMTQuNDI3IDMgMTIuOTE2NCAzLjg2Mjc1IDEyIDUuMTg2MjdDMTEuMTAzNyAzLjg3MjU1IDkuNTczMDEgMyA3LjcwOTk3IDNDNC40NDcxMyAzIDIgNS40NTA5OCAyIDguOTIxNTdDMiAxMy4wOTggNS41OTUxNyAxNy4yMDU5IDExLjI3NDkgMjAuNzM1M0MxMS40ODY0IDIwLjg2MjcgMTEuNzg4NSAyMSAxMiAyMVpNMTIgMTkuMzQzMUMxMS45NTk3IDE5LjM0MzEgMTEuODg5MiAxOS4yOTQxIDExLjc5ODYgMTkuMjI1NUM3LjU3OTA1IDE2LjUgMy42MjEzNSAxMi41Njg2IDMuNjIxMzUgOC45MjE1N0MzLjYyMTM1IDYuMzEzNzMgNS4zNTM0NyA0LjU3ODQzIDcuNjg5ODMgNC41Nzg0M0M5LjU4MzA4IDQuNTc4NDMgMTAuNjcwNyA1LjcyNTQ5IDExLjMxNTIgNi43MDU4OEMxMS41ODcxIDcuMDk4MDQgMTEuNzU4MyA3LjIwNTg4IDEyIDcuMjA1ODhDMTIuMjQxNyA3LjIwNTg4IDEyLjM5MjcgNy4wODgyNCAxMi42ODQ4IDYuNzA1ODhDMTMuMzc5NyA1Ljc0NTEgMTQuNDI3IDQuNTc4NDMgMTYuMzEwMiA0LjU3ODQzQzE4LjY0NjUgNC41Nzg0MyAyMC4zNzg3IDYuMzEzNzMgMjAuMzc4NyA4LjkyMTU3QzIwLjM3ODcgMTIuNTY4NiAxNi40MjA5IDE2LjUgMTIuMjExNSAxOS4yMjU1QzEyLjExMDggMTkuMjk0MSAxMi4wNDAzIDE5LjM0MzEgMTIgMTkuMzQzMVoiIGZpbGw9IiM3QjhFOTgiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAxOS4zNDMyQzExLjk1OTcgMTkuMzQzMiAxMS44ODkyIDE5LjI5NDIgMTEuNzk4NiAxOS4yMjU1QzcuNTc5MDQgMTYuNTAwMSAzLjYyMTM0IDEyLjU2ODcgMy42MjEzNCA4LjkyMTYzQzMuNjIxMzQgNi4zMTM3OSA1LjM1MzQ2IDQuNTc4NDkgNy42ODk4MiA0LjU3ODQ5QzkuNTgzMDcgNC41Nzg0OSAxMC42NzA3IDUuNzI1NTUgMTEuMzE1MiA2LjcwNTk0QzExLjU4NzEgNy4wOTgxIDExLjc1ODMgNy4yMDU5NCAxMiA3LjIwNTk0QzEyLjI0MTcgNy4yMDU5NCAxMi4zOTI3IDcuMDg4MjkgMTIuNjg0OCA2LjcwNTk0QzEzLjM3OTYgNS43NDUxNiAxNC40MjcgNC41Nzg0OSAxNi4zMTAyIDQuNTc4NDlDMTguNjQ2NSA0LjU3ODQ5IDIwLjM3ODYgNi4zMTM3OSAyMC4zNzg2IDguOTIxNjNDMjAuMzc4NiAxMi41Njg3IDE2LjQyMDkgMTYuNTAwMSAxMi4yMTE1IDE5LjIyNTVDMTIuMTEwOCAxOS4yOTQyIDEyLjA0MDMgMTkuMzQzMiAxMiAxOS4zNDMyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" className="like active"/>:<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAyMUMxMi4yMTE1IDIxIDEyLjUxMzYgMjAuODYyNyAxMi43MzUxIDIwLjczNTNDMTguNDA0OCAxNy4yMDU5IDIyIDEzLjA5OCAyMiA4LjkyMTU3QzIyIDUuNDUwOTggMTkuNTUyOSAzIDE2LjI5IDNDMTQuNDI3IDMgMTIuOTE2NCAzLjg2Mjc1IDEyIDUuMTg2MjdDMTEuMTAzNyAzLjg3MjU1IDkuNTczMDEgMyA3LjcwOTk3IDNDNC40NDcxMyAzIDIgNS40NTA5OCAyIDguOTIxNTdDMiAxMy4wOTggNS41OTUxNyAxNy4yMDU5IDExLjI3NDkgMjAuNzM1M0MxMS40ODY0IDIwLjg2MjcgMTEuNzg4NSAyMSAxMiAyMVpNMTIgMTkuMzQzMUMxMS45NTk3IDE5LjM0MzEgMTEuODg5MiAxOS4yOTQxIDExLjc5ODYgMTkuMjI1NUM3LjU3OTA1IDE2LjUgMy42MjEzNSAxMi41Njg2IDMuNjIxMzUgOC45MjE1N0MzLjYyMTM1IDYuMzEzNzMgNS4zNTM0NyA0LjU3ODQzIDcuNjg5ODMgNC41Nzg0M0M5LjU4MzA4IDQuNTc4NDMgMTAuNjcwNyA1LjcyNTQ5IDExLjMxNTIgNi43MDU4OEMxMS41ODcxIDcuMDk4MDQgMTEuNzU4MyA3LjIwNTg4IDEyIDcuMjA1ODhDMTIuMjQxNyA3LjIwNTg4IDEyLjM5MjcgNy4wODgyNCAxMi42ODQ4IDYuNzA1ODhDMTMuMzc5NyA1Ljc0NTEgMTQuNDI3IDQuNTc4NDMgMTYuMzEwMiA0LjU3ODQzQzE4LjY0NjUgNC41Nzg0MyAyMC4zNzg3IDYuMzEzNzMgMjAuMzc4NyA4LjkyMTU3QzIwLjM3ODcgMTIuNTY4NiAxNi40MjA5IDE2LjUgMTIuMjExNSAxOS4yMjU1QzEyLjExMDggMTkuMjk0MSAxMi4wNDAzIDE5LjM0MzEgMTIgMTkuMzQzMVoiIGZpbGw9IiM3QjhFOTgiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAxOS4zNDMyQzExLjk1OTcgMTkuMzQzMiAxMS44ODkyIDE5LjI5NDIgMTEuNzk4NiAxOS4yMjU1QzcuNTc5MDQgMTYuNTAwMSAzLjYyMTM0IDEyLjU2ODcgMy42MjEzNCA4LjkyMTYzQzMuNjIxMzQgNi4zMTM3OSA1LjM1MzQ2IDQuNTc4NDkgNy42ODk4MiA0LjU3ODQ5QzkuNTgzMDcgNC41Nzg0OSAxMC42NzA3IDUuNzI1NTUgMTEuMzE1MiA2LjcwNTk0QzExLjU4NzEgNy4wOTgxIDExLjc1ODMgNy4yMDU5NCAxMiA3LjIwNTk0QzEyLjI0MTcgNy4yMDU5NCAxMi4zOTI3IDcuMDg4MjkgMTIuNjg0OCA2LjcwNTk0QzEzLjM3OTYgNS43NDUxNiAxNC40MjcgNC41Nzg0OSAxNi4zMTAyIDQuNTc4NDlDMTguNjQ2NSA0LjU3ODQ5IDIwLjM3ODYgNi4zMTM3OSAyMC4zNzg2IDguOTIxNjNDMjAuMzc4NiAxMi41Njg3IDE2LjQyMDkgMTYuNTAwMSAxMi4yMTE1IDE5LjIyNTVDMTIuMTEwOCAxOS4yOTQyIDEyLjA0MDMgMTkuMzQzMiAxMiAxOS4zNDMyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" className="like"/>}{likes.length}</div>
+<div className="post__comments">{comments.map(comment=><Comment text={comment.text} key={comment._id}></Comment>)}</div>
+<div className="post__tags">{tags}</div>
+<div className="post__title">{title}</div>
+{author ? (
+        <div className="post__author">
+          {`${author.name}, ${author.about}, ${author.email}`}
+          <img className="postAuthor_img" src={author.avatar}></img>
+        </div>
+      ) : (
+        <></>
+      )}
+<div className="post__text">{text}</div>
+<div className="post__created_at">{created_at}</div>
+<div className="post__updated_at">{updated_at}</div>
+{canDelete?<Button text={"Delete"} onClick={()=> deletePost(_id)}/> : <></>} 
+</div>
+);
+};
+
+export default Post;
