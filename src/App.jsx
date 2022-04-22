@@ -6,6 +6,7 @@ import Body from "./components/Body";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import User from "./components/User";
+import "./index.css"
 
 const App = () => {
     const [posts, setPosts] = useState()
@@ -47,7 +48,7 @@ const App = () => {
         <h2>Welcome to Our Image Board!</h2>
         <p>We're stoked that you're here. 🥳</p>
         </div>
-    <Button className="button" onClick={()=>{
+    <Button className="button__create" onClick={()=>{
         console.log("Есть контакт")
     }} text={"Create post"}> 
     </Button><PostList data={posts? posts:[] } user={user} updateLikeStatus={updateLikeStatus} deletePost={deletePost} >

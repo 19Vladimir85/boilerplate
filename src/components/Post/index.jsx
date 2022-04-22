@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import Button from "../button";
 import "./index.css";
 
@@ -36,9 +37,9 @@ return (
         <></>
       )}
 <div className="post__text">{text}</div>
-<div className="post__created_at">{created_at}</div>
-<div className="post__updated_at">{updated_at}</div>
-{canDelete?<Button text={"Delete"} onClick={()=> deletePost(_id)}/> : <></>} 
+<div className="post__created_at">{moment(created_at).format('MM/DD/YYYY')}</div>
+<div className="post__updated_at">{moment(updated_at).format('MM/DD/YYYY')}</div>
+{canDelete?<Button className="button__delete" text={"Delete"} onClick={()=> deletePost(_id)}/> : <></>} 
 </div>
 );
 };
